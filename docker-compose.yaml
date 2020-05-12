@@ -1,0 +1,49 @@
+version: '3'
+services:
+  activemq:
+    image: "rmohr/activemq"
+    ports:
+      - "8161:8161"
+      - "61616:61616"
+    networks:
+      - network
+  tanques:
+    build:
+      context: ./Tanques
+      dockerfile: Dockerfile
+    networks:
+      - network
+    ports:
+      - "8080:8080"
+  reator:
+    build:
+      context: ./Reator
+      dockerfile: Dockerfile
+    networks:
+      - network
+    ports:
+      - "8081:8081"
+  decantador:
+    build:
+      context: ./Decantador
+      dockerfile: Dockerfile
+    networks:
+      - network
+    ports:
+      - "8082:8082"
+  lavagem:
+    build:
+      context: ./Lavagem
+      dockerfile: Dockerfile
+    networks:
+      - network
+    ports:
+      - "8083:8083"
+  secagem:
+    build:
+      context: ./Secagem
+      dockerfile: Dockerfile
+    networks:
+      - network
+    ports:
+      - "8084:8084"
