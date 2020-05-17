@@ -8,10 +8,14 @@ import data.OutputEtoh;
 @Component
 public class ListenerEtoh {
 	
-	@JmsListener(destination = "Decantador", containerFactory = "")
+	int totalEtoh = 0;
+	
+	@JmsListener(destination = "Tanque-EtOH", containerFactory = "")
 	public void receiveMessage(OutputEtoh outputEtoh) throws InterruptedException {
 		System.out.println("========================================================");
 		System.out.println("Recebendo: "+ outputEtoh.getEtoh() + " de EtOH");
+		totalEtoh = totalEtoh + outputEtoh.getEtoh();
+		System.out.println("Total do tanque de EtOH: " + totalEtoh);
 		Thread.sleep(1000);
 	}	
 }

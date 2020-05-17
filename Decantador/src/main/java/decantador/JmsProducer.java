@@ -29,10 +29,10 @@ public class JmsProducer {
 			jmsTemplate.convertAndSend("Lavagem-1", outputResultado);
 			jmsTemplate.convertAndSend("Lavagem-2", outputResultado);
 			jmsTemplate.convertAndSend("Lavagem-3", outputResultado);
-			Thread.sleep(1000);
 			System.out.println("Iteração output (lançado para a Lavagem): "+ countLavagem);
-			System.out.println("Quandidade enviado para cada tanque de lavagem: "+ outputResultado.getResultado());
+			System.out.println("Quantidade enviado para cada tanque de lavagem: "+ outputResultado.getResultado());
 			countLavagem++;
+			Thread.sleep(1000);
 		}
 	}
 	public void sendToTanqueGlicerina() throws InterruptedException {
@@ -40,10 +40,10 @@ public class JmsProducer {
 		while(true) {
 			System.out.println("========================================================");
 			jmsTemplate.convertAndSend("Tanque-Glicerina", outputGlicerina);
-			Thread.sleep(1000);
 			System.out.println("Iteração output (lançado para o Tanque de Glicerina): "+ countGlicerina);
-			System.out.println("Quandidade enviado: "+ outputGlicerina.getGlicerina());
+			System.out.println("Quantidade enviado: "+ outputGlicerina.getGlicerina());
 			countGlicerina++;
+			Thread.sleep(1000);
 		}
 	}
 	public void sendToTanqueEtoh() throws InterruptedException {
@@ -51,10 +51,10 @@ public class JmsProducer {
 		while(true) {
 			System.out.println("========================================================");
 			jmsTemplate.convertAndSend("Tanque-EtOH", outputEtoh);
-			Thread.sleep(1000);
 			System.out.println("Iteração output (lançado para o Tanque de EtOH): "+ countEtoh);
-			System.out.println("Quandidade enviado: "+ outputEtoh.getEtoh());
+			System.out.println("Quantidade enviado: "+ outputEtoh.getEtoh());
 			countEtoh++;
+			Thread.sleep(1000);
 		}
 	}
 }

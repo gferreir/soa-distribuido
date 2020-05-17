@@ -1,49 +1,60 @@
-version: '3'
+version: "3.3"
 services:
   activemq:
     image: "rmohr/activemq"
+    hostname: activemq
     ports:
       - "8161:8161"
       - "61616:61616"
-    networks:
-      - network
+    # networks:
+    #   - docker-net
   tanques:
     build:
       context: ./Tanques
       dockerfile: Dockerfile
-    networks:
-      - network
+    # networks:
+    #   - docker-net
+    depends_on:
+      - activemq
     ports:
       - "8080:8080"
   reator:
     build:
       context: ./Reator
       dockerfile: Dockerfile
-    networks:
-      - network
+    # networks:
+    #   - docker-net
+    depends_on:
+      - activemq
     ports:
-      - "8081:8081"
+      - "8081:8080"
   decantador:
     build:
       context: ./Decantador
       dockerfile: Dockerfile
-    networks:
-      - network
+    # networks:
+    #   - docker-net
+    depends_on:
+      - activemq
     ports:
-      - "8082:8082"
+      - "8082:8080"
   lavagem:
     build:
       context: ./Lavagem
       dockerfile: Dockerfile
-    networks:
-      - network
+    # networks:
+    #   - docker-net
+    depends_on:
+      - activemq
     ports:
-      - "8083:8083"
+      - "8083:8080"
   secagem:
     build:
       context: ./Secagem
       dockerfile: Dockerfile
-    networks:
-      - network
+    # networks:
+    #   - docker-net
+    depends_on:
+      - activemq
     ports:
-      - "8084:8084"
+      - "8084:8080"

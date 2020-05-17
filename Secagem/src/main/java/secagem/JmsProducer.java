@@ -21,10 +21,10 @@ public class JmsProducer {
 		while(true) {
 			System.out.println("========================================================");
 			jmsTemplate.convertAndSend("Tanque-biodiesel", outputSecagem);
-			Thread.sleep(3000);
 			System.out.println("Iteração output (lançado para o Tanque de BioDiesel): "+ countSecagem);
 			System.out.println("Cada tanque está enviando uma quantidade de: "+ outputSecagem.getMistura());
 			countSecagem++;
+			Thread.sleep(3000);
 		}
 	}
 }

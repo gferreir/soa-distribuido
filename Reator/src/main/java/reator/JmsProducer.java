@@ -21,10 +21,10 @@ public class JmsProducer {
 		while(true) {
 			System.out.println("========================================================");
 			jmsTemplate.convertAndSend("Decantador", mistura);
-			Thread.sleep(1000);
 			System.out.println("Iteração output (lançado para o Decantador): "+ countMistura);
 			System.out.println("Quandidade de Mistura enviado: "+ mistura.getMistura());
 			countMistura++;
+			Thread.sleep(1000);
 		}
 	}
 }

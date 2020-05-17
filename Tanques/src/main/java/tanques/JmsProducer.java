@@ -29,19 +29,19 @@ public class JmsProducer {
 			jmsTemplate.convertAndSend("Tanque-Oleo", oleo);
 			System.out.println("Iteração óleo: "+ countOleo);
 			System.out.println("Quantidade de óleo enviado: "+ rand);
-			Thread.sleep(5000);
 			countOleo++;
+			Thread.sleep(5000);
 		}
 	}
 	public void sendReagentes() throws InterruptedException {
 		while(true) {
 			System.out.println("========================================================");
 			jmsTemplate.convertAndSend("NaOH+EtOH", reagentes);
-			Thread.sleep(1000);
 			System.out.println("Iteração NaOh+EtOh: "+ countReagentes);
 			System.out.println("Quandidade de NaOH enviado: "+ reagentes.getNaoh());
 			System.out.println("Quantidade de EtOH enviado: "+ reagentes.getEtoh());
 			countReagentes++;
+			Thread.sleep(1000);
 		}
 	}
 	public void sendToReator() throws InterruptedException {
@@ -51,12 +51,12 @@ public class JmsProducer {
 		while(true) {
 			System.out.println("========================================================");
 			jmsTemplate.convertAndSend("Reator", output);
-			Thread.sleep(1000);
 			System.out.println("Iteração output (lançado para o Reator): "+ countOutput);
-			System.out.println("Quandidade de Óleo enviado: "+ output.getQtdOleo());
-			System.out.println("Quandidade de NaOH enviado: "+ output.getNaoh());
-			System.out.println("Quantidade de EtOH enviado: "+ output.getEtoh());
+			System.out.println("Quandidade de Óleo enviado p/ reator: "+ output.getQtdOleo());
+			System.out.println("Quandidade de NaOH enviado p/ reator: "+ output.getNaoh());
+			System.out.println("Quantidade de EtOH enviado p/ reator: "+ output.getEtoh());
 			countOutput++;
+			Thread.sleep(1000);
 		}
 	}
 }
